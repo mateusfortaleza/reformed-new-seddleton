@@ -1,6 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Figtree, Instrument_Sans, Cinzel, Pixelify_Sans, Tiny5 } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const instrumentSansHeading = Instrument_Sans({subsets:['latin'],variable:'--font-heading'});
+
+const figtree = Figtree({subsets:['latin'],variable:'--font-sans'});
+
+const cinzel = Cinzel({ subsets: ["latin"], variable: "--cinzel" });
+
+const pixelifySans = Pixelify_Sans({ subsets: ["latin"], variable: "--pixelify-sans" });
+
+const tiny5 = Tiny5({ subsets: ["latin"], weight: "400", variable: "--tiny5" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", figtree.variable, instrumentSansHeading.variable, cinzel.variable, pixelifySans.variable, tiny5.variable)}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
